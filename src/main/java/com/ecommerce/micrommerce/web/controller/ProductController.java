@@ -52,6 +52,12 @@ public class ProductController {
         return marges;
     }
 
+    @ApiOperation("Récupère la liste des produits triée par ordre alphabetique")
+    @GetMapping("/ProduitsParOrdreAlphabetique")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+        return productDao.findAllByOrderByNomDesc();
+    }
+
     @ApiOperation(value = "Récupère un produit grâce à son ID à condition que celui-ci soit en stock!")
     @GetMapping(value = "/Produits/{id}")
     public Product afficherUnProduit(@PathVariable int id) {
